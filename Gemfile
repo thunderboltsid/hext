@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'figaro'
 gem 'twilio-ruby', '~> 4.9.0'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'spring'

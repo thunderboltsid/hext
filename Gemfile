@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'figaro'
+gem 'twilio-ruby', '~> 4.9.0'
 
 group :development do
   gem 'spring'

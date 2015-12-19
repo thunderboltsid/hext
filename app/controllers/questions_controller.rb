@@ -26,6 +26,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new(twilio_question_params)
+
+    if @question.save
+      redirect_to @question, notice: 'Question was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
@@ -52,5 +59,12 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:message, :phone_number)
+    end
+
+    def twilio_question_params
+      {
+        phone_number: params["From"],
+        message:      params["Body"]
+      }
     end
 end

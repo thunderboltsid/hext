@@ -14,4 +14,4 @@
 /config/application.yml
 
 # Ignore .idea
-/.idea/*
+/.idea/*.*

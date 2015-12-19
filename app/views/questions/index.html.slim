@@ -1,0 +1,9 @@
+p#notice = notice
+h1 Questions
+- @questions.each do |question|
+  .question
+    .box
+      .phone_number= question.phone_number
+      .message= question.message
+    .options
+      .btn-answer= link_to 'Answer', question

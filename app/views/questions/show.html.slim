@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Message:
+  = @question.message
+p
+  strong
+    | Phone number:
+  = @question.phone_number
+= link_to 'Edit', edit_question_path(@question)
+|  |
+= link_to 'Back', questions_path

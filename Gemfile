@@ -10,6 +10,7 @@ gem 'twilio-ruby', '~> 4.9.0'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem "slim-rails"
 
 group :development, :test do
   gem 'spring'

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
     post :send_sms, on: :collection
   end
   root 'questions#index'
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 end

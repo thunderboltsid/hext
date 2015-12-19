@@ -1,18 +1,20 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3
   pool: 5
+  timeout: 5000
 
 development:
   <<: *default
-  database: hext_development
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  database: hext_test
+  database: db/test.sqlite3
 
 production:
-  <<: *default
+  adapter:  postgresql
+  encoding: unicode
+  pool:     5
   database: hext_production
   username: hext
   password: <%= ENV['HEXT_DATABASE_PASSWORD'] %>

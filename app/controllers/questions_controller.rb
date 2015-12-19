@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:send_sms, :create]
+  before_action :set_question, only: [:show, :destroy]
+  before_action :set_client,   only: [:send_sms, :create]
 
   def index
     @questions = Question.all
@@ -14,9 +14,6 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
-  def edit
-  end
-
   def send_sms
     @client.messages.create(
       from: ENV["TWILIO_PHONE_NUMBER"],
@@ -27,19 +24,10 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(twilio_question_params)
-
     if @question.save
-      redirect_to @question, notice: 'Question was successfully created.'
+      puts "New question (#{twilio_question_params[:phone_number]}): #{twilio_question_params[:message]}"
     else
-      render :new
-    end
-  end
-
-  def update
-    if @question.update(question_params)
-      redirect_to @question, notice: 'Question was successfully updated.'
-    else
-      render :edit
+      puts "There was an error with the question (#{twilio_question_params[:phone_number]}): #{twilio_question_params[:message]}"
     end
   end
 

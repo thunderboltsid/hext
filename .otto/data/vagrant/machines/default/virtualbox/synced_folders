@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"owner":"vagrant","group":"vagrant","guestpath":"/vagrant","hostpath":"/Users/siddharthshukla/hext","disabled":false},"/otto/foundation-1":{"guestpath":"/otto/foundation-1","hostpath":"/Users/siddharthshukla/hext/.otto/compiled/app/foundation-consul/app-dev","disabled":false}}}

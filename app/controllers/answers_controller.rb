@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
   before_action :set_client, only: [:create]
 
   def index
-    @answers = Answer.all.reverse
+    @answers = @question.answers.reverse
   end
 
   def show

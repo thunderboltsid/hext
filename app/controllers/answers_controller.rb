@@ -18,6 +18,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(answer_params)
+    @answer.question_id = params[:question_id]
 
     if @answer.save
       redirect_to question_answers_url(@question), notice: 'Answer was successfully created.'
@@ -49,6 +50,6 @@ class AnswersController < ApplicationController
     end
 
     def answer_params
-      params.require(:answer).permit(:user_id, :question_id, :text)
+      params.require(:answer).permit(:user_id, :text)
     end
 end

@@ -4,6 +4,8 @@ h1 Questions
   .question
     .box
       .phone_number= question.phone_number
-      .message= question.message
+      .message
+        p= question.message
+        .answers-number= question.answers.count
     .options
       .btn-answer= link_to 'Answer', new_question_answer_path(question)

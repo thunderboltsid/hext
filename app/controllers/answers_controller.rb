@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_question, only: [:index, :new, :create]
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:create]
 
   def index
     @answers = Answer.all.reverse
@@ -21,6 +23,11 @@ class AnswersController < ApplicationController
     @answer.question_id = params[:question_id]
 
     if @answer.save
+      @client.messages.create(
+        from: ENV["TWILIO_PHONE_NUMBER"],
+        to:   @question.phone_number,
+        body: @answer.text
+      )
       redirect_to question_answers_url(@question), notice: 'Answer was successfully created.'
     else
       render :new
@@ -41,6 +48,10 @@ class AnswersController < ApplicationController
   end
 
   private
+    def set_client
+      @client = Twilio::REST::Client.new
+    end
+
     def set_answer
       @answer = Answer.find(params[:id])
     end

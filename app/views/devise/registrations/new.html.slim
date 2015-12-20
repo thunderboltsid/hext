@@ -16,3 +16,7 @@ h2
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
     = f.submit "Sign up"
+
+p.center
+  | or
+  .btn.center= link_to "Log in", new_session_path(resource_name)

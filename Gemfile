@@ -10,7 +10,8 @@ gem 'twilio-ruby', '~> 4.9.0'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem "slim-rails"
+gem 'slim-rails'
+gem 'google_url_shortener'
 
 group :development, :test do
   gem 'spring'

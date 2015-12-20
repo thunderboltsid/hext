@@ -22,6 +22,17 @@ class QuestionsController < ApplicationController
     )
   end
 
+  def get_shorten_link
+    Google::UrlShortener.shorten!(new_question_answer_url(params[:question_id]))
+  end
+
+  def feed
+    @questions = Question.all.reverse
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   def create
     @question = Question.new(twilio_question_params)
     if @question.save

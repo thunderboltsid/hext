@@ -1,0 +1,13 @@
+h2 = @question.message
+
+- @answers.each do |answer|
+  .question
+    .box
+      .phone_number
+        - if answer.user.present?
+          = answer.user.email
+        - else
+          = "test@gmail.com"
+      .message= answer.text
+
+.btn.center= link_to 'New Answer', new_question_answer_path

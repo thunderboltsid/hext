@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :set_client,   only: [:send_sms, :create]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.reverse
   end
 
   def show

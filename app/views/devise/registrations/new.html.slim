@@ -8,11 +8,6 @@ h2
     = f.email_field :email, autofocus: true
   .field
     = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
     br
     = f.password_field :password, autocomplete: "off"
   .field
@@ -21,4 +16,3 @@ h2
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
     = f.submit "Sign up"
-= render "devise/shared/links"

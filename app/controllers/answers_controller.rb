@@ -1,9 +1,9 @@
 class AnswersController < ApplicationController
-  before_action :set_question, only: [:index, :create]
+  before_action :set_question, only: [:index, :new, :create]
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @answers = Answer.all
+    @answers = Answer.all.reverse
   end
 
   def show
@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
 
     if @answer.save
-      redirect_to [@question, @answer], notice: 'Answer was successfully created.'
+      redirect_to question_answers_url(@question), notice: 'Answer was successfully created.'
     else
       render :new
     end
